@@ -3,7 +3,7 @@
 namespace Serkancelik17\TrendyolApi\V1\Order\Order\Response\Content;
 
 use Serkancelik17\TrendyolApi\V1\Order\Order\Response\Content\Line\DiscountDetail;
-use App\Libraries\Models\Response\Util;
+use Serkancelik17\ApiBase\Response\Util;
 
 class Line
 {

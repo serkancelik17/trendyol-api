@@ -4,7 +4,7 @@ namespace Serkancelik17\TrendyolApi\V1\Product\Brand\Request;
 
 
 use Serkancelik17\TrendyolApi\V1\TrendyolRequest;
-use App\Libraries\Models\Parameter;
+use Serkancelik17\ApiBase\Parameter;
 
 class ByNameRequest extends TrendyolRequest
 {

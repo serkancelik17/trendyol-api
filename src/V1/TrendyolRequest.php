@@ -2,7 +2,7 @@
 
 namespace Serkancelik17\TrendyolApi\V1;
 
-use App\Libraries\Models\Parameter;
+use Serkancelik17\ApiBase\Parameter;
 use Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter;
 use Serkancelik17\ApiBase\Request\Authorization\BasicAuthorization;
 use Serkancelik17\ApiBase\Request\Authorization\IAuthorization;

@@ -4,8 +4,8 @@ namespace Serkancelik17\TrendyolApi\V1\Order\Order\Response;
 
 use Serkancelik17\TrendyolApi\V1\Order\Order\Request\OrderRequest;
 use Serkancelik17\TrendyolApi\V1\TrendyolResponse;
-use App\Libraries\Models\Response\IResponse;
-use App\Libraries\Models\Response\Util;
+use Serkancelik17\ApiBase\Response\IResponse;
+use Serkancelik17\ApiBase\Response\Util;
 
 class OrderResponse extends TrendyolResponse implements IResponse
 {
