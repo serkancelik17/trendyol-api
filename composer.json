@@ -5,7 +5,7 @@
     "require": {
         "guzzlehttp/guzzle": "7.4",
         "php": "^8.0",
-        "serkancelik17/api-base": "dev-main"
+        "serkancelik17/api-base",
     },
     "license": "proprietary",
     "authors": [
