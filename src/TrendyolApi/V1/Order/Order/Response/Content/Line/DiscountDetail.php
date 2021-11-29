@@ -1,6 +1,6 @@
 <?php
 
-namespace TrendyolApi\V1\Order\Order\Response\Content\Line;
+namespace Serkancelik17\TrendyolApi\V1\Order\Order\Response\Content\Line;
 
 use App\Libraries\Models\Response\Util;
 

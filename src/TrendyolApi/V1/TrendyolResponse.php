@@ -1,6 +1,6 @@
 <?php
 
-namespace TrendyolApi\V1;
+namespace Serkancelik17\TrendyolApi\V1;
 
 use App\Libraries\Models\Response\BaseResponse;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace TrendyolApi\V1;
+namespace Serkancelik17\TrendyolApi\V1;
 
 use App\Libraries\Models\Parameter;
-use TrendyolApi\V1\Order\Order\Request\QueryParameter;
-use App\Libraries\Models\Request\Authorization\BasicAuthorization;
-use App\Libraries\Models\Request\Authorization\IAuthorization;
-use App\Libraries\Models\Request\BaseRequest;
-use App\Libraries\Models\Request\Header;
-use App\Libraries\Models\Request\IRequest;
-use App\Libraries\Models\Request\Url;
+use Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter;
+use Serkancelik17\ApiBase\Request\Authorization\BasicAuthorization;
+use Serkancelik17\ApiBase\Request\Authorization\IAuthorization;
+use Serkancelik17\ApiBase\Request\BaseRequest;
+use Serkancelik17\ApiBase\Request\Header;
+use Serkancelik17\ApiBase\Request\IRequest;
+use Serkancelik17\ApiBase\Request\Url;
 
 abstract class TrendyolRequest extends BaseRequest
 {

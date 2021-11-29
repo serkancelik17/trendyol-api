@@ -1,11 +1,10 @@
 <?php
 
-namespace TrendyolApi\V1\Order\Order\Request;
+namespace Serkancelik17\TrendyolApi\V1\Order\Order\Request;
 
 
-use TrendyolApi\V1\Order\Order\Request\QueryParameter;
-use App\Libraries\Models\Request\IRequest;
-use TrendyolApi\V1\TrendyolRequest;
+use Serkancelik17\ApiBase\Request\IRequest;
+use Serkancelik17\TrendyolApi\V1\TrendyolRequest;
 
 class OrderRequest extends TrendyolRequest implements IRequest
 {

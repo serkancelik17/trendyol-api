@@ -1,10 +1,10 @@
 <?php
 
-namespace TrendyolApi\V1\Order\Order\Request;
+namespace Serkancelik17\TrendyolApi\V1\Order\Order\Request;
 
-use TrendyolApi\V1\Order\Order\Request\QueryParameter\OrderByDirectionQueryParameter;
-use TrendyolApi\V1\Order\Order\Request\QueryParameter\StatusQueryParameter;
-use App\Libraries\Models\Request\QueryParameter\IQueryParameter;
+use Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter\OrderByDirectionQueryParameter;
+use Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter\StatusQueryParameter;
+use Serkancelik17\ApiBase\Request\QueryParameter\IQueryParameter;
 use DateTime;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
@@ -182,7 +182,7 @@ class QueryParameter implements IQueryParameter
         return $this;
     }
 
-        #[Pure] #[ArrayShape(['startDate' => "int", 'endDate' => "int", 'page' => "int", 'size' => "int", 'status' => "\TrendyolApi\V1\Order\Order\Request\QueryParameter\StatusQueryParameter[]", 'orderByField' => "string", 'orderByDirection' => "\TrendyolApi\V1\Order\Order\Request\QueryParameter\OrderByDirectionQueryParameter", 'shipmentPackageIds' => "int"])]
+        #[Pure] #[ArrayShape(['startDate' => "int", 'endDate' => "int", 'page' => "int", 'size' => "int", 'status' => "\Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter\StatusQueryParameter[]", 'orderByField' => "string", 'orderByDirection' => "\Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter\OrderByDirectionQueryParameter", 'shipmentPackageIds' => "int"])]
         private function toArray() :array {
         return [
                 'startDate' => $this->getStartDate(),

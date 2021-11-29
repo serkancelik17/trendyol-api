@@ -1,9 +1,9 @@
 <?php
 
-namespace TrendyolApi\V1\Product\Brand\Request;
+namespace Serkancelik17\TrendyolApi\V1\Product\Brand\Request;
 
 
-use TrendyolApi\V1\TrendyolRequest;
+use Serkancelik17\TrendyolApi\V1\TrendyolRequest;
 use App\Libraries\Models\Parameter;
 
 class ByNameRequest extends TrendyolRequest

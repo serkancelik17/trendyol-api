@@ -1,8 +1,8 @@
 <?php
 
-namespace TrendyolApi\V1\Product\BatchRequest\Request;
+namespace Serkancelik17\TrendyolApi\V1\Product\BatchRequest\Request;
 
-use TrendyolApi\TrendyolRequest;
+use Serkancelik17\TrendyolApi\TrendyolRequest;
 
 class BatchRequestRequest extends TrendyolRequest
 {

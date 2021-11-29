@@ -1,8 +1,8 @@
 <?php
 
-namespace TrendyolApi\V1\Shipment\Provider\Request;
+namespace Serkancelik17\TrendyolApi\V1\Shipment\Provider\Request;
 
-use TrendyolApi\TrendyolRequest;
+use Serkancelik17\TrendyolApi\TrendyolRequest;
 
 class ShipmentProviderRequest extends TrendyolRequest
 {

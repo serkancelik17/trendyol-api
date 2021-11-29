@@ -1,8 +1,8 @@
 <?php
 
-namespace TrendyolApi\V1\Order\Order\Response\Content;
+namespace Serkancelik17\TrendyolApi\V1\Order\Order\Response\Content;
 
-use TrendyolApi\V1\Order\Order\Response\Content\Line\DiscountDetail;
+use Serkancelik17\TrendyolApi\V1\Order\Order\Response\Content\Line\DiscountDetail;
 use App\Libraries\Models\Response\Util;
 
 class Line

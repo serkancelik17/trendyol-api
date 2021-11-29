@@ -1,9 +1,9 @@
 <?php
 
-namespace TrendyolApi\V1\Order\Order\Response;
+namespace Serkancelik17\TrendyolApi\V1\Order\Order\Response;
 
-use TrendyolApi\V1\Order\Order\Request\OrderRequest;
-use TrendyolApi\V1\TrendyolResponse;
+use Serkancelik17\TrendyolApi\V1\Order\Order\Request\OrderRequest;
+use Serkancelik17\TrendyolApi\V1\TrendyolResponse;
 use App\Libraries\Models\Response\IResponse;
 use App\Libraries\Models\Response\Util;
 
