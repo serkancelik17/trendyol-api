@@ -1,10 +1,11 @@
 <?php
 
 require_once __DIR__.'/vendor/autoload.php';
+use Serkancelik17\TrendyolApi\V1\Config;
+use Serkancelik17\TrendyolApi\V1\Order\Request\OrderRequest;
 
-$config = new \Serkancelik17\TrendyolApi\V1\Config(104967,"zpEYe8qpnB6g05D34IwK","OLRyhXRHmEUIjuvWJgxG");
+$config = new Config(104967,"zpEYe8qpnB6g05D34IwK","OLRyhXRHmEUIjuvWJgxG");
+$service = new \Serkancelik17\TrendyolApi\V1\Services\OrderService($config);
+$request = new OrderRequest();
 
-$request = new \Serkancelik17\TrendyolApi\V1\Order\Order\Request\OrderRequest($config);
-$response = new \Serkancelik17\TrendyolApi\V1\Order\Order\Response\OrderResponse($request);
-
-var_dump($response);
+var_dump($service->getOrders($request));

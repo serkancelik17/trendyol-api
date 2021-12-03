@@ -4,7 +4,11 @@ namespace Serkancelik17\TrendyolApi\V1;
 
 class Config
 {
-
+    /**
+     * @param int $supplierId
+     * @param string $username
+     * @param string $password
+     */
     public function __construct(private int $supplierId,private string $username,private string $password)
     {
     }
@@ -56,7 +60,4 @@ class Config
     {
         $this->password = $password;
     }
-
-
-
 }

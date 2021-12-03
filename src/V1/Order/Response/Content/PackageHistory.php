@@ -1,6 +1,6 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Order\Response\Content;
+namespace Serkancelik17\TrendyolApi\V1\Order\Response\Content;
 
 use Serkancelik17\ApiBase\Response\Util;
 

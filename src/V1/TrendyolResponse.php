@@ -2,6 +2,7 @@
 
 namespace Serkancelik17\TrendyolApi\V1;
 
+use Serkancelik17\ApiBase\Request\IRequest;
 use Serkancelik17\ApiBase\Response\BaseResponse;
 
 abstract class TrendyolResponse extends BaseResponse

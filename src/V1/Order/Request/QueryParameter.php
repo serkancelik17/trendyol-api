@@ -1,9 +1,9 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Order\Request;
+namespace Serkancelik17\TrendyolApi\V1\Order\Request;
 
-use Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter\OrderByDirectionQueryParameter;
-use Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter\StatusQueryParameter;
+use Serkancelik17\TrendyolApi\V1\Order\Request\QueryParameter\OrderByDirectionQueryParameter;
+use Serkancelik17\TrendyolApi\V1\Order\Request\QueryParameter\StatusQueryParameter;
 use Serkancelik17\ApiBase\Request\QueryParameter\IQueryParameter;
 use DateTime;
 use JetBrains\PhpStorm\ArrayShape;

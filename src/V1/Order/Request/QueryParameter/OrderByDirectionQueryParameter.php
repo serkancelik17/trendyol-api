@@ -1,6 +1,6 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter;
+namespace Serkancelik17\TrendyolApi\V1\Order\Request\QueryParameter;
 
 class OrderByDirectionQueryParameter
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Order\Response;
+namespace Serkancelik17\TrendyolApi\V1\Order\Response;
 
-use Serkancelik17\TrendyolApi\V1\Order\Order\Request\OrderRequest;
+use Serkancelik17\TrendyolApi\V1\Order\Request\OrderRequest;
 use Serkancelik17\TrendyolApi\V1\TrendyolResponse;
 use Serkancelik17\ApiBase\Response\IResponse;
 use Serkancelik17\ApiBase\Response\Util;
