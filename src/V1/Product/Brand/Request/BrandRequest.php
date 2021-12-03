@@ -1,8 +1,8 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Product\Brand\Request;
+namespace Entegrator\TrendyolApi\V1\Product\Brand\Request;
 
-use Serkancelik17\TrendyolApi\V1\TrendyolRequest;
+use Entegrator\TrendyolApi\V1\TrendyolRequest;
 
 class BrandRequest extends TrendyolRequest
 {

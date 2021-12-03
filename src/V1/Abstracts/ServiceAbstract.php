@@ -1,16 +1,16 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1;
+namespace Entegrator\TrendyolApi\V1\Abstracts;
 
-use Serkancelik17\ApiBase\Parameter;
-use Serkancelik17\ApiBase\Request\Authorization\BasicAuthorization;
-use Serkancelik17\ApiBase\Request\Authorization\IAuthorization;
-use Serkancelik17\ApiBase\Request\Header;
+use Entegrator\ApiBase\Parameter;
+use Entegrator\ApiBase\Request\Authorization\BasicAuthorization;
+use Entegrator\ApiBase\Request\Authorization\IAuthorization;
+use Entegrator\ApiBase\Request\Header;
+use Entegrator\TrendyolApi\V1\Config;
 
-class TrendyolService
+abstract class ServiceAbstract
 {
     protected static Config $config;
-    private TrendyolRequest $request;
 
     protected static string $TEST_URL = 'https://stageapi.trendyol.com/stagesapigw';
     protected static string $PROD_URL = 'https://api.trendyol.com/sapigw';
@@ -35,24 +35,4 @@ class TrendyolService
         return new BasicAuthorization(self::$config->getUsername(),self::$config->getPassword());
 
     }
-
-    /**
-     * @return TrendyolRequest
-     */
-    public function getRequest(): TrendyolRequest
-    {
-        return $this->request;
-    }
-
-    /**
-     * @param TrendyolRequest $request
-     */
-    public function setRequest(TrendyolRequest $request): void
-    {
-        $request->setHeader($this->createHeader());
-        $request->setAuthorization($this->createAuthorization());
-        $this->request = $request;
-    }
-
-
 }

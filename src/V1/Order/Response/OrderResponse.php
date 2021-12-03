@@ -1,11 +1,11 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Response;
+namespace Entegrator\TrendyolApi\V1\Order\Response;
 
-use Serkancelik17\TrendyolApi\V1\Order\Request\OrderRequest;
-use Serkancelik17\TrendyolApi\V1\TrendyolResponse;
-use Serkancelik17\ApiBase\Response\IResponse;
-use Serkancelik17\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Order\Request\OrderRequest;
+use Entegrator\TrendyolApi\V1\TrendyolResponse;
+use Entegrator\ApiBase\Response\IResponse;
+use Entegrator\ApiBase\Response\Util;
 
 class OrderResponse extends TrendyolResponse implements IResponse
 {
@@ -32,6 +32,14 @@ class OrderResponse extends TrendyolResponse implements IResponse
             $this->content[] = new Content((array) $content);
 
         return $this;
+    }
+
+    /**
+     * @return Content[]
+     */
+    public function getContent(): array
+    {
+        return $this->content;
     }
 
 }

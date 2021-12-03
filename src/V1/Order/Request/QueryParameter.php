@@ -1,10 +1,10 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Request;
+namespace Entegrator\TrendyolApi\V1\Order\Request;
 
-use Serkancelik17\TrendyolApi\V1\Order\Request\QueryParameter\OrderByDirectionQueryParameter;
-use Serkancelik17\TrendyolApi\V1\Order\Request\QueryParameter\StatusQueryParameter;
-use Serkancelik17\ApiBase\Request\QueryParameter\IQueryParameter;
+use Entegrator\TrendyolApi\V1\Order\Request\QueryParameter\OrderByDirectionQueryParameter;
+use Entegrator\TrendyolApi\V1\Order\Request\QueryParameter\StatusQueryParameter;
+use Entegrator\ApiBase\Request\QueryParameter\IQueryParameter;
 use DateTime;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
@@ -26,6 +26,8 @@ class QueryParameter implements IQueryParameter
      * @label('Number of PageSize')
      */
     private int|null $size = null;
+    private int|null $supplierId = null;
+    private string|null $orderNumber = null;
     /** @var string|null $status */
     private string|null $status = null;
     private string|null $orderByField = null;
@@ -82,7 +84,7 @@ class QueryParameter implements IQueryParameter
      */
     public function setPage(int $page): QueryParameter
     {
-        Assert::greaterThan($page, 0);
+       // Assert::greaterThan($page, 0);
 
         $this->page = $page;
         return $this;
@@ -182,19 +184,55 @@ class QueryParameter implements IQueryParameter
         return $this;
     }
 
-        #[Pure] #[ArrayShape(['startDate' => "int", 'endDate' => "int", 'page' => "int", 'size' => "int", 'status' => "\Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter\StatusQueryParameter[]", 'orderByField' => "string", 'orderByDirection' => "\Serkancelik17\TrendyolApi\V1\Order\Order\Request\QueryParameter\OrderByDirectionQueryParameter", 'shipmentPackageIds' => "int"])]
+        #[Pure] #[ArrayShape(['startDate' => "int", 'endDate' => "int", 'page' => "int", 'size' => "int",'supplierId' => "int", "orderNumber" => "string", 'status' => "\Entegrator\TrendyolApi\V1\Order\Order\Request\QueryParameter\StatusQueryParameter[]", 'orderByField' => "string", 'orderByDirection' => "\Entegrator\TrendyolApi\V1\Order\Order\Request\QueryParameter\OrderByDirectionQueryParameter", 'shipmentPackageIds' => "int"])]
         private function toArray() :array {
         return [
                 'startDate' => $this->getStartDate(),
                 'endDate' => $this->getEndDate(),
                 'page' => $this->getPage(),
                 'size' => $this->getSize(),
+                'supplierId' => $this->getSupplierId(),
+                "orderNumber" => $this->getOrderNumber(),
                 'status' =>$this->getStatus(),
                 'orderByField' => $this->getOrderByField(),
                 'orderByDirection' => $this->getOrderByDirection(),
                 'shipmentPackageIds' => $this->getShipmentPackageIds(),
         ];
     }
+
+    /**
+     * @return int|null
+     */
+    public function getSupplierId(): ?int
+    {
+        return $this->supplierId;
+    }
+
+    /**
+     * @param int|null $supplierId
+     */
+    public function setSupplierId(?int $supplierId): void
+    {
+        $this->supplierId = $supplierId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getOrderNumber(): ?string
+    {
+        return $this->orderNumber;
+    }
+
+    /**
+     * @param string|null $orderNumber
+     */
+    public function setOrderNumber(?string $orderNumber): void
+    {
+        $this->orderNumber = $orderNumber;
+    }
+
+
 
     #[Pure] public function __toString(): string
     {

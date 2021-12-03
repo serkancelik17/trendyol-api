@@ -1,11 +1,11 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Response;
+namespace Entegrator\TrendyolApi\V1\Order\Response;
 
-use Serkancelik17\TrendyolApi\V1\Order\Response\Content\Address;
-use Serkancelik17\TrendyolApi\V1\Order\Response\Content\Line;
-use Serkancelik17\TrendyolApi\V1\Order\Response\Content\PackageHistory;
-use Serkancelik17\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Order\Response\Content\Address;
+use Entegrator\TrendyolApi\V1\Order\Response\Content\Line;
+use Entegrator\TrendyolApi\V1\Order\Response\Content\PackageHistory;
+use Entegrator\ApiBase\Response\Util;
 
 class Content
 {

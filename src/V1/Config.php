@@ -1,6 +1,6 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1;
+namespace Entegrator\TrendyolApi\V1;
 
 class Config
 {

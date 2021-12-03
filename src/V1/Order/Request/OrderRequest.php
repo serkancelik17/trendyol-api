@@ -1,10 +1,10 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Request;
+namespace Entegrator\TrendyolApi\V1\Order\Request;
 
 
 use JetBrains\PhpStorm\Pure;
-use Serkancelik17\TrendyolApi\V1\TrendyolRequest;
+use Entegrator\TrendyolApi\V1\TrendyolRequest;
 
 class OrderRequest extends TrendyolRequest
 {

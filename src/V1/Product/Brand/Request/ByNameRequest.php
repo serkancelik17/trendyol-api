@@ -1,11 +1,11 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Product\Brand\Request;
+namespace Entegrator\TrendyolApi\V1\Product\Brand\Request;
 
 
-use Serkancelik17\TrendyolApi\V1\Config;
-use Serkancelik17\TrendyolApi\V1\TrendyolRequest;
-use Serkancelik17\ApiBase\Parameter;
+use Entegrator\TrendyolApi\V1\Config;
+use Entegrator\TrendyolApi\V1\TrendyolRequest;
+use Entegrator\ApiBase\Parameter;
 
 class ByNameRequest extends TrendyolRequest
 {

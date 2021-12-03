@@ -1,9 +1,9 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1;
+namespace Entegrator\TrendyolApi\V1;
 
-use Serkancelik17\ApiBase\Request\IRequest;
-use Serkancelik17\ApiBase\Response\BaseResponse;
+use Entegrator\ApiBase\Request\IRequest;
+use Entegrator\ApiBase\Response\BaseResponse;
 
 abstract class TrendyolResponse extends BaseResponse
 {

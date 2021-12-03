@@ -1,8 +1,8 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Response\Content;
+namespace Entegrator\TrendyolApi\V1\Order\Response\Content;
 
-use Serkancelik17\ApiBase\Response\Util;
+use Entegrator\ApiBase\Response\Util;
 
 class PackageHistory
 {

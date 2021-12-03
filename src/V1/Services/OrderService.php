@@ -1,13 +1,14 @@
 <?php
-namespace Serkancelik17\TrendyolApi\V1\Services;
+namespace Entegrator\TrendyolApi\V1\Services;
 
-use Serkancelik17\ApiBase\Request\Url;
-use Serkancelik17\TrendyolApi\V1\Config;
-use Serkancelik17\TrendyolApi\V1\Order\Request\OrderRequest;
-use Serkancelik17\TrendyolApi\V1\Order\Response\OrderResponse;
-use Serkancelik17\TrendyolApi\V1\TrendyolService;
+use Entegrator\ApiBase\Request\Url;
+use Entegrator\TrendyolApi\V1\Abstracts\ServiceAbstract;
+use Entegrator\TrendyolApi\V1\Config;
+use Entegrator\TrendyolApi\V1\Order\Request\OrderRequest;
+use Entegrator\TrendyolApi\V1\Order\Request\QueryParameter;
+use Entegrator\TrendyolApi\V1\Order\Response\OrderResponse;
 
-class OrderService extends TrendyolService
+class OrderService extends ServiceAbstract
 {
 
     public function __construct(Config $config, bool $isTest = false)
@@ -15,14 +16,34 @@ class OrderService extends TrendyolService
         parent::__construct($config, $isTest);
     }
 
-    function getOrders(OrderRequest $orderRequest) {
+    function getOrders(OrderRequest $orderRequest): OrderResponse
+    {
         $endPoint = '/suppliers/'.self::$config->getSupplierId().'/orders';
 
-        $this->setRequest($orderRequest);
+        $url = new Url(self::$URL, $endPoint, null, $orderRequest->getQueryParameter());
+        $this->setHeaderAndFooter($orderRequest);
+        $orderRequest->setUrl($url);
 
-        $orderRequest->setUrl(new Url(self::$URL, $endPoint, null, $orderRequest->getQueryParameter()));
+        return new OrderResponse($orderRequest);
+    }
 
-        return new OrderResponse($this->getRequest());
+    function getOrder(string $orderNumber): OrderResponse
+    {
+
+        $parameter = new QueryParameter();
+        $parameter->setOrderNumber($orderNumber);
+        $orderRequest = new OrderRequest($parameter);
+
+        return $this->getOrders($orderRequest);
+    }
+
+    /**
+     * @param OrderRequest $orderRequest
+     */
+    private function setHeaderAndFooter(OrderRequest $orderRequest): void
+    {
+        $orderRequest->setHeader($this->createHeader());
+        $orderRequest->setAuthorization($this->createAuthorization());
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Serkancelik17\TrendyolApi\V1\Order\Request\QueryParameter;
+namespace Entegrator\TrendyolApi\V1\Order\Request\QueryParameter;
 class StatusQueryParameter
 {
     const CREATED = 'Created';
