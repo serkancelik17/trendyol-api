@@ -3,7 +3,6 @@
     "description": "Trendyol API",
     "type": "library",
     "require": {
-        "guzzlehttp/guzzle": "7.4",
         "php": "^8.0",
         "serkancelik17/api-base": "1.*"
     },
@@ -16,7 +15,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Entegrator\\ApiBase\\": "../api-base/src/"
+            "Entegrator\\TrendyolApi\\": "src/"
         }
     },
     "minimum-stability": "dev"
