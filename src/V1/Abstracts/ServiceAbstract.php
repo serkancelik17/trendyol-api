@@ -2,9 +2,10 @@
 
 namespace Entegrator\TrendyolApi\V1\Abstracts;
 
+use Entegrator\ApiBase\Abstracts\RequestAbstract;
+use Entegrator\ApiBase\Interfaces\AuthorizationInterface;
 use Entegrator\ApiBase\Parameter;
 use Entegrator\ApiBase\Request\Authorization\BasicAuthorization;
-use Entegrator\ApiBase\Request\Authorization\IAuthorization;
 use Entegrator\ApiBase\Request\Header;
 use Entegrator\TrendyolApi\V1\Config;
 
@@ -30,9 +31,21 @@ abstract class ServiceAbstract
         return new Header($parameters);
     }
 
-    protected function createAuthorization(): IAuthorization
+    protected function createAuthorization(): BasicAuthorization
     {
         return new BasicAuthorization(self::$config->getUsername(),self::$config->getPassword());
 
+    }
+
+    /**
+     * @param RequestAbstract $request
+     * @return RequestAbstract
+     */
+    public function setRequestHeaders(RequestAbstract $request): RequestAbstract
+    {
+        $request->setHeader($this->createHeader());
+        $request->setAuthorization($this->createAuthorization());
+
+        return $request;
     }
 }

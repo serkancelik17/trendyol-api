@@ -14,5 +14,10 @@
             "email": "serkancelik1734@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Entegrator\\ApiBase\\": "../api-base/src/"
+        }
+    },
     "minimum-stability": "dev"
 }
