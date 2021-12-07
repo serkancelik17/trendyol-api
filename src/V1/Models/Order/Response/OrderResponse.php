@@ -2,13 +2,13 @@
 
 namespace Entegrator\TrendyolApi\V1\Models\Order\Response;
 
+use Entegrator\ApiBase\Abstracts\ResponseAbstract;
 use Entegrator\ApiBase\Interfaces\ResponseInterface;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;
-use Entegrator\TrendyolApi\V1\Abstracts\ResponseAbstractAbstract;
 use Entegrator\TrendyolApi\V1\Schemas\Order;
 use Entegrator\ApiBase\Response\Util;
 
-class OrderResponse extends ResponseAbstractAbstract implements ResponseInterface
+class OrderResponse extends ResponseAbstract implements ResponseInterface
 {
     use Util;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Entegrator\TrendyolApi\V1\Abstracts;
+namespace Entegrator\TrendyolApi\V1;
 
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
-use Entegrator\ApiBase\Interfaces\AuthorizationInterface;
 use Entegrator\ApiBase\Parameter;
 use Entegrator\ApiBase\Request\Authorization\BasicAuthorization;
 use Entegrator\ApiBase\Request\Header;
-use Entegrator\TrendyolApi\V1\Config;
+use Entegrator\TrendyolApi\V1\Services\OrderService;
+use Entegrator\TrendyolApi\V1\Services\ProductService;
 
-abstract class ServiceAbstract
+class TrendyolApi
 {
     protected static Config $config;
 
@@ -38,14 +38,22 @@ abstract class ServiceAbstract
     }
 
     /**
-     * @param RequestAbstract $request
-     * @return RequestAbstract
+     * @return TrendyolApi
      */
-    public function setRequestHeaders(RequestAbstract $request): RequestAbstract
+    public function setRequestHeaders(RequestAbstract $requestAbstract): self
     {
-        $request->setHeader($this->createHeader());
-        $request->setAuthorization($this->createAuthorization());
+        $requestAbstract->setHeader($this->createHeader());
+        $requestAbstract->setAuthorization($this->createAuthorization());
+        return $this;
+    }
 
-        return $request;
+    public function getOrderService(): OrderService
+    {
+        return new OrderService(self::$config);
+    }
+
+    public function getProductService(): ProductService
+    {
+        return new ProductService(self::$config);
     }
 }
