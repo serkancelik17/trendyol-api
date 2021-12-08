@@ -2,11 +2,14 @@
 
 namespace Entegrator\TrendyolApi\V1\Services;
 
+use Entegrator\ApiBase\Abstracts\RequestAbstract;
 use Entegrator\ApiBase\Abstracts\ResponseAbstract;
+use Entegrator\ApiBase\Interfaces\QueryParameterInterface;
 use Entegrator\ApiBase\Request\Url;
 use Entegrator\ApiBase\Response\Util;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Request\BatchRequestRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Response\BatchRequestResponse;
+use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\ByNameRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\QueryParameter;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Response\ByNameResponse;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\AttributeRequest;
@@ -19,48 +22,60 @@ use Entegrator\TrendyolApi\V1\Models\Product\Brand\Response\BrandResponse;
 
 class ProductService extends TrendyolApi
 {
+    private RequestAbstract $request;
+    private ResponseAbstract $response;
+    private QueryParameterInterface $queryParameter;
+
     use Util;
 
-    public function getBrands(string $name = null) : Brand|BrandResponse
+    public function getBrands(QueryParameter $queryParameter = null) : BrandResponse
     {
-        $queryParams = null;
+        $this->queryParameter = $queryParameter ?? new QueryParameter();
+        $this->request = new BrandRequest();
+
         $endPoint = '/brands';
 
-        if ($name) { // Eger isim filtresi varsa
-        $endPoint .= '/by-name';
-        $queryParams = new QueryParameter();
-        $queryParams->setName($name);
-        }
+        $url = new Url(self::$URL, $endPoint, null,$this->queryParameter);
+        $this->request->setUrl($url);
+        $this->setRequestHeaders($this->request);
 
-        $request = new BrandRequest($queryParams);
 
-        $url = new Url(self::$URL, $endPoint, null,$queryParams);
+        $this->response = new BrandResponse($this->request);
 
-        $request->setUrl($url);
-        $this->setRequestHeaders($request);
-        $response = null;
+        return $this->response;
+    }
 
-        if($name) {
-            $response = json_decode($request->run(),true);
-           $response = new Brand($response[0]);
-        } else {
-            $response = new BrandResponse($request);
-        }
 
-        return $response;
+    public function getBrandsByName(ByNameRequest\QueryParameter $queryParameter) : ByNameResponse
+    {
+        $this->queryParameter = $queryParameter;
+        $this->request = new ByNameRequest();
+
+        $endPoint = '/brands/by-name';
+
+        $url = new Url(self::$URL, $endPoint, null,$this->queryParameter);
+        $this->request->setUrl($url);
+        $this->setRequestHeaders($this->request);
+
+
+        $this->response = new ByNameResponse($this->request);
+
+        return $this->response;
     }
 
     public function getCategories() : AttributeResponse
     {
-        $request = new CategoryRequest();
+        $this->request = new CategoryRequest();
+
         $endPoint = '/product-categories';
         $url = new Url(self::$URL, $endPoint);
 
-        $request->setUrl($url);
-        $this->setRequestHeaders($request);
+        $this->request->setUrl($url);
+        $this->setRequestHeaders($this->request);
 
-        return new AttributeResponse($request);
+        return new AttributeResponse($this->request);
     }
+
     public function getBatchRequests(string $batchRequestId): BatchRequestResponse
     {
         $request = new BatchRequestRequest($batchRequestId);

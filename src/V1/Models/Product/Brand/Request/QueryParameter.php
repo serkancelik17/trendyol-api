@@ -3,33 +3,69 @@
 namespace Entegrator\TrendyolApi\V1\Models\Product\Brand\Request;
 
 use Entegrator\ApiBase\Interfaces\QueryParameterInterface;
+use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
 
 class QueryParameter implements QueryParameterInterface
 {
-    private string|null $name;
+    private int $page; //Servis cevabınında hangi sayfadaki markaların getirileceği bilgisi
+    private int $size; //Bir servis cevabında yer alacak Marka sayısı
 
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
+    public function __construct(int $page = 1, int $size = 500)
     {
-        return $this->name;
+        $this->page = $page;
+        $this->size = $size;
+
     }
 
     /**
-     * @param string|null $name
+     * @return int
+     */
+    public function getPage(): int
+    {
+        return $this->page;
+    }
+
+    /**
+     * @param int $page
      * @return QueryParameter
      */
-    public function setName(?string $name): QueryParameter
+    public function setPage(int $page): QueryParameter
     {
-        $this->name = $name;
+        $this->page = $page;
         return $this;
     }
 
-
-    #[Pure] public function __toString(): string
+    /**
+     * @return int
+     */
+    public function getSize(): int
     {
-       return 'name='.$this->getName();
+        return $this->size;
+    }
+
+    /**
+     * @param int $size
+     * @return QueryParameter
+     */
+    public function setSize(int $size): QueryParameter
+    {
+        $this->size = $size;
+        return $this;
+    }
+
+    #[Pure] #[ArrayShape(['page' => "int", 'size' => "int"])]
+    public function toArray(): array
+    {
+        return [
+            'page' => $this->getPage(),
+            'size' => $this->getSize()
+        ];
+    }
+
+
+    public function __toString(): string
+    {
+       return http_build_query($this->toArray());
     }
 }

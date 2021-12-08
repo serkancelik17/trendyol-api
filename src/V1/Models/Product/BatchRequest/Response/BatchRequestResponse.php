@@ -25,42 +25,42 @@ class BatchRequestResponse extends ResponseAbstract implements ResponseInterface
     /**
      * @var array
      */
-    private array $items;
+    private array $items = [];
 
     /**
-     * @var string
+     * @var ?string
      */
-    private string $status;
+    private ?string $status = null;
 
     /**
-     * @var int
+     * @var ?int
      */
-    private int $creationDate;
+    private ?int $creationDate = null;
 
     /**
-     * @var int
+     * @var ?int
      */
-    private int $lastModification;
+    private ?int $lastModification = null;
 
     /**
-     * @var string
+     * @var ?string
      */
-    private string $sourceType;
+    private ?string $sourceType = null;
 
     /**
-     * @var int
+     * @var ?int
      */
-    private int $itemCount;
+    private ?int $itemCount = null;
 
     /**
-     * @var int
+     * @var ?int
      */
-    private int $failedItemCount;
+    private ?int $failedItemCount = null;
 
     /**
-     * @var string
+     * @var ?string
      */
-    private string $batchRequestType;
+    private ?string $batchRequestType = null;
 
 
     /**
@@ -84,9 +84,9 @@ class BatchRequestResponse extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return array
+     * @return Item[]
      */
-    public function getItems()
+    public function getItems(): array
     {
         return $this->items;
     }

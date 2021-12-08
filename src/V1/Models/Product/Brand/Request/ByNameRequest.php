@@ -13,8 +13,6 @@ class ByNameRequest extends RequestAbstract
 
     public function __construct()
     {
-
-        $this->run();
     }
 
 }
