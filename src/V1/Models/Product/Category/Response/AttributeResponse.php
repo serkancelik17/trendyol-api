@@ -5,7 +5,7 @@ namespace Entegrator\TrendyolApi\V1\Models\Product\Category\Response;
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
 use Entegrator\ApiBase\Abstracts\ResponseAbstract;
 use Entegrator\ApiBase\Interfaces\ResponseInterface;
-use Entegrator\TrendyolApi\V1\Schemas\Category;
+use Entegrator\TrendyolApi\V1\Schemas\Category\Attribute;
 
 class AttributeResponse extends ResponseAbstract implements ResponseInterface
 {
@@ -31,7 +31,7 @@ class AttributeResponse extends ResponseAbstract implements ResponseInterface
     private string $displayName;
 
     /**
-     * @var Category\Attribute[] $categoryAttributes
+     * @var Attribute[] $categoryAttributes
      */
     private array $categoryAttributes;
 
@@ -113,7 +113,7 @@ class AttributeResponse extends ResponseAbstract implements ResponseInterface
     {
         $this->categoryAttributes = [];
         foreach ($categoryAttributes AS $categoryAttribute)
-        $this->categoryAttributes[] = new Category\Attribute($categoryAttribute);
+        $this->categoryAttributes[] = new Attribute($categoryAttribute);
 
         return $this;
     }

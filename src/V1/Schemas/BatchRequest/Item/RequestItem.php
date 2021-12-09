@@ -1,5 +1,5 @@
 <?php
-namespace Entegrator\TrendyolApi\V1\Schemas\BatchRequest\Item;
+namespace Entegrator\TrendyolApi\V1\Schemas\Order\BatchRequest\Item;
 
 use Entegrator\ApiBase\Response\Util;
 

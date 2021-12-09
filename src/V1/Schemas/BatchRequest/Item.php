@@ -1,9 +1,9 @@
 <?php
 
-namespace Entegrator\TrendyolApi\V1\Schemas\BatchRequest;
+namespace Entegrator\TrendyolApi\V1\Schemas\Order\BatchRequest;
 
 use Entegrator\ApiBase\Response\Util;
-use Entegrator\TrendyolApi\V1\Schemas\BatchRequest\Item\RequestItem;
+use Entegrator\TrendyolApi\V1\Schemas\Order\BatchRequest\Item\RequestItem;
 
 class Item
 {

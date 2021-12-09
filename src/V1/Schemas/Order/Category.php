@@ -1,6 +1,6 @@
 <?php
 
-namespace Entegrator\TrendyolApi\V1\Schemas;
+namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
 use Entegrator\ApiBase\Response\Util;
 

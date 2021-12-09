@@ -6,7 +6,7 @@ use Entegrator\ApiBase\Abstracts\ResponseAbstract;
 use Entegrator\ApiBase\Interfaces\ResponseInterface;
 use Entegrator\ApiBase\Response\Util;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\CategoryRequest;
-use Entegrator\TrendyolApi\V1\Schemas\Category;
+use Entegrator\TrendyolApi\V1\Schemas\Order\Category;
 
 class CategoryResponse extends ResponseAbstract implements ResponseInterface
 {

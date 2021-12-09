@@ -19,9 +19,9 @@ class Attribute
     private bool $allowCustom;
 
     /**
-     * @var \Entegrator\TrendyolApi\V1\Schemas\Attribute
+     * @var \Entegrator\TrendyolApi\V1\Schemas\Order\Attribute
      */
-    private \Entegrator\TrendyolApi\V1\Schemas\Attribute $attribute;
+    private \Entegrator\TrendyolApi\V1\Schemas\Order\Attribute $attribute;
 
     /**
      * @var array
@@ -70,9 +70,9 @@ class Attribute
     }
 
     /**
-     * @return \Entegrator\TrendyolApi\V1\Schemas\Attribute
+     * @return \Entegrator\TrendyolApi\V1\Schemas\Order\Attribute
      */
-    public function getAttribute(): \Entegrator\TrendyolApi\V1\Schemas\Attribute
+    public function getAttribute(): \Entegrator\TrendyolApi\V1\Schemas\Order\Attribute
     {
         return $this->attribute;
     }
@@ -84,7 +84,7 @@ class Attribute
      */
     public function setAttribute(array $attribute): self
     {
-        $this->attribute = new \Entegrator\TrendyolApi\V1\Schemas\Attribute($attribute);
+        $this->attribute = new \Entegrator\TrendyolApi\V1\Schemas\Order\Attribute($attribute);
 
         return $this;
     }

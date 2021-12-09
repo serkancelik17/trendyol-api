@@ -1,8 +1,8 @@
 <?php
 
-namespace Entegrator\TrendyolApi\V1\Schemas;
+namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\TrendyolApi\V1\Schemas\DiscountDetail;
+use Entegrator\TrendyolApi\V1\Schemas\Order\DiscountDetail;
 use Entegrator\ApiBase\Response\Util;
 
 class Line

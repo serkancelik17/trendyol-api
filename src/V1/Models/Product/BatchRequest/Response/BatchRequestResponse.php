@@ -6,7 +6,7 @@ use Entegrator\ApiBase\Abstracts\ResponseAbstract;
 use Entegrator\ApiBase\Interfaces\ResponseInterface;
 use Entegrator\ApiBase\Response\Util;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Request\BatchRequestRequest;
-use Entegrator\TrendyolApi\V1\Schemas\BatchRequest\Item;
+use Entegrator\TrendyolApi\V1\Schemas\Order\BatchRequest\Item;
 
 class BatchRequestResponse extends ResponseAbstract implements ResponseInterface
 {

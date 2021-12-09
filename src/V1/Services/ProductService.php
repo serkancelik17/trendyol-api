@@ -7,6 +7,8 @@ use Entegrator\ApiBase\Abstracts\ResponseAbstract;
 use Entegrator\ApiBase\Interfaces\QueryParameterInterface;
 use Entegrator\ApiBase\Request\Url;
 use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Models\Product\Address\Request\AddressRequest;
+use Entegrator\TrendyolApi\V1\Models\Product\Address\Response\AddressResponse;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Request\BatchRequestRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Response\BatchRequestResponse;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\ByNameRequest;
@@ -15,7 +17,7 @@ use Entegrator\TrendyolApi\V1\Models\Product\Brand\Response\ByNameResponse;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\AttributeRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\CategoryRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Response\AttributeResponse;
-use Entegrator\TrendyolApi\V1\Schemas\Brand;
+use Entegrator\TrendyolApi\V1\Schemas\Order\Brand;
 use Entegrator\TrendyolApi\V1\TrendyolApi;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\BrandRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Response\BrandResponse;
@@ -45,7 +47,10 @@ class ProductService extends TrendyolApi
         return $this->response;
     }
 
-
+    /**
+     * @param ByNameRequest\QueryParameter $queryParameter
+     * @return ByNameResponse
+     */
     public function getBrandsByName(ByNameRequest\QueryParameter $queryParameter) : ByNameResponse
     {
         $this->queryParameter = $queryParameter;
@@ -63,6 +68,9 @@ class ProductService extends TrendyolApi
         return $this->response;
     }
 
+    /**
+     * @return AttributeResponse
+     */
     public function getCategories() : AttributeResponse
     {
         $this->request = new CategoryRequest();
@@ -76,6 +84,10 @@ class ProductService extends TrendyolApi
         return new AttributeResponse($this->request);
     }
 
+    /**
+     * @param string $batchRequestId
+     * @return BatchRequestResponse
+     */
     public function getBatchRequests(string $batchRequestId): BatchRequestResponse
     {
         $request = new BatchRequestRequest($batchRequestId);
@@ -88,6 +100,10 @@ class ProductService extends TrendyolApi
         return new BatchRequestResponse($request);
     }
 
+    /**
+     * @param int $categoryId
+     * @return AttributeResponse
+     */
     public function getAttributes(int $categoryId): AttributeResponse
     {
 
@@ -99,5 +115,20 @@ class ProductService extends TrendyolApi
         $this->setRequestHeaders($request);
 
         return new AttributeResponse($request);
+    }
+
+    /**
+     * @return AddressResponse
+     */
+    public function getSuppliersAddress(): AddressResponse
+    {
+        $request = new AddressRequest();
+        $endPoint = '/suppliers/'.self::$config->getSupplierId().'/addresses';
+        $url = new Url(self::$URL, $endPoint);
+
+        $request->setUrl($url);
+        $this->setRequestHeaders($request);
+
+        return new AddressResponse($request);
     }
 }

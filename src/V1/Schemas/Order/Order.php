@@ -1,10 +1,10 @@
 <?php
 
-namespace Entegrator\TrendyolApi\V1\Schemas;
+namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\TrendyolApi\V1\Schemas\Address;
-use Entegrator\TrendyolApi\V1\Schemas;
-use Entegrator\TrendyolApi\V1\Schemas\PackageHistory;
+use Entegrator\TrendyolApi\V1\Schemas\Order\Address;
+use Entegrator\TrendyolApi\V1\Schemas\Order\Line;
+use Entegrator\TrendyolApi\V1\Schemas\Order\PackageHistory;
 use Entegrator\ApiBase\Response\Util;
 
 class Order
