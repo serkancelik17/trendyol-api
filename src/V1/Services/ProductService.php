@@ -2,49 +2,58 @@
 
 namespace Entegrator\TrendyolApi\V1\Services;
 
-use Entegrator\ApiBase\Abstracts\RequestAbstract;
-use Entegrator\ApiBase\Abstracts\ResponseAbstract;
 use Entegrator\ApiBase\Interfaces\QueryParameterInterface;
 use Entegrator\ApiBase\Request\Url;
 use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Address\Request\AddressRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Address\Response\AddressResponse;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Request\BatchRequestRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Response\BatchRequestResponse;
+use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\BrandRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\ByNameRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\QueryParameter;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Response\ByNameResponse;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\AttributeRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\CategoryRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Response\AttributeResponse;
-use Entegrator\TrendyolApi\V1\Schemas\Order\Brand;
+use Entegrator\TrendyolApi\V1\Models\Product\Category\Response\CategoryResponse;
 use Entegrator\TrendyolApi\V1\TrendyolApi;
-use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\BrandRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Response\BrandResponse;
 
-class ProductService extends TrendyolApi
+class ProductService
 {
-    private RequestAbstract $request;
-    private ResponseAbstract $response;
     private QueryParameterInterface $queryParameter;
+    private TrendyolApi $api;
 
     use Util;
 
+    /**
+     * @param TrendyolApi $api
+     */
+    public function __construct(TrendyolApi $api)
+    {
+        $this->api = $api;
+    }
+
+    /**
+     * @throws \Exception
+     */
     public function getBrands(QueryParameter $queryParameter = null) : BrandResponse
     {
         $this->queryParameter = $queryParameter ?? new QueryParameter();
-        $this->request = new BrandRequest();
+        $this->api->setRequest($this->api->getRequest() ?? new BrandRequest());
+        $this->api->setRequestHeaders();
 
         $endPoint = '/brands';
 
-        $url = new Url(self::$URL, $endPoint, null,$this->queryParameter);
-        $this->request->setUrl($url);
-        $this->setRequestHeaders($this->request);
+        $url = new Url(TrendyolApi::$URL, $endPoint, null,$this->queryParameter);
+        $this->api->getRequest()->setUrl($url);
+
+        $response = new BrandResponse($this->api->getRequest());
 
 
-        $this->response = new BrandResponse($this->request);
-
-        return $this->response;
+        return $response;
     }
 
     /**
@@ -54,34 +63,34 @@ class ProductService extends TrendyolApi
     public function getBrandsByName(ByNameRequest\QueryParameter $queryParameter) : ByNameResponse
     {
         $this->queryParameter = $queryParameter;
-        $this->request = new ByNameRequest();
+        $this->api->setRequest($this->api->getRequest() ?? new ByNameRequest());
 
         $endPoint = '/brands/by-name';
 
-        $url = new Url(self::$URL, $endPoint, null,$this->queryParameter);
-        $this->request->setUrl($url);
-        $this->setRequestHeaders($this->request);
+        $url = new Url(TrendyolApi::$URL, $endPoint, null,$this->queryParameter);
+        $this->api->getRequest()->setUrl($url);
+        $this->api->setRequestHeaders();
 
 
-        $this->response = new ByNameResponse($this->request);
+        $response = new ByNameResponse($this->api->getRequest());
 
-        return $this->response;
+        return $response;
     }
 
     /**
      * @return AttributeResponse
      */
-    public function getCategories() : AttributeResponse
+    public function getCategories() : CategoryResponse
     {
-        $this->request = new CategoryRequest();
+        $this->api->setRequest($this->api->getRequest() ?? new CategoryRequest());
 
         $endPoint = '/product-categories';
-        $url = new Url(self::$URL, $endPoint);
+        $url = new Url(TrendyolApi::$URL, $endPoint);
 
-        $this->request->setUrl($url);
-        $this->setRequestHeaders($this->request);
+        $this->api->getRequest()->setUrl($url);
+        $this->api->setRequestHeaders();
 
-        return new AttributeResponse($this->request);
+        return new CategoryResponse($this->api->getRequest());
     }
 
     /**
@@ -90,14 +99,14 @@ class ProductService extends TrendyolApi
      */
     public function getBatchRequests(string $batchRequestId): BatchRequestResponse
     {
-        $request = new BatchRequestRequest($batchRequestId);
-        $endpoint = '/suppliers/'.self::$config->getSupplierId().'/products/batch-requests/'.$batchRequestId;
-        $url = new Url(self::$URL,$endpoint);
+        $this->api->setRequest($this->api->getRequest() ?? new BatchRequestRequest());
+        $endpoint = '/suppliers/'.TrendyolApi::$config->getSupplierId().'/products/batch-requests/'.$batchRequestId;
+        $url = new Url(TrendyolApi::$URL,$endpoint);
 
-        $request->setUrl($url);
-        $this->setRequestHeaders($request);
+        $this->api->getRequest()->setUrl($url);
+        $this->api->setRequestHeaders();
 
-        return new BatchRequestResponse($request);
+        return new BatchRequestResponse($this->api->getRequest());
     }
 
     /**
@@ -107,14 +116,14 @@ class ProductService extends TrendyolApi
     public function getAttributes(int $categoryId): AttributeResponse
     {
 
-        $request = new AttributeRequest();
+        $this->api->setRequest($this->api->getRequest() ?? new AttributeRequest());
         $endPoint = '/product-categories/'.$categoryId.'/attributes';
-        $url = new Url(self::$URL, $endPoint);
+        $url = new Url(TrendyolApi::$URL, $endPoint);
 
-        $request->setUrl($url);
-        $this->setRequestHeaders($request);
+        $this->api->getRequest()->setUrl($url);
+        $this->api->setRequestHeaders();
 
-        return new AttributeResponse($request);
+        return new AttributeResponse($this->api->getRequest());
     }
 
     /**
@@ -122,13 +131,13 @@ class ProductService extends TrendyolApi
      */
     public function getSuppliersAddress(): AddressResponse
     {
-        $request = new AddressRequest();
-        $endPoint = '/suppliers/'.self::$config->getSupplierId().'/addresses';
-        $url = new Url(self::$URL, $endPoint);
+        $this->api->setRequest($this->api->getRequest() ?? new AddressRequest());
+        $endPoint = '/suppliers/'.TrendyolApi::$config->getSupplierId().'/addresses';
+        $url = new Url(TrendyolApi::$URL, $endPoint);
 
-        $request->setUrl($url);
-        $this->setRequestHeaders($request);
+        $this->api->getRequest()->setUrl($url);
+        $this->api->setRequestHeaders();
 
-        return new AddressResponse($request);
+        return new AddressResponse($this->api->getRequest());
     }
 }

@@ -5,9 +5,10 @@ namespace Entegrator\TrendyolApi\V1\Models\Order\Request;
 
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
 
+use Entegrator\TrendyolApi\V1\Interfaces\RequestInterface;
 use JetBrains\PhpStorm\Pure;
 
-class OrderRequest extends RequestAbstract
+class OrderRequest extends RequestAbstract implements RequestInterface
 {
     private QueryParameter $queryParameter;
 

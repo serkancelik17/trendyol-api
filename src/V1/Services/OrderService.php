@@ -3,27 +3,41 @@ namespace Entegrator\TrendyolApi\V1\Services;
 
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
 use Entegrator\ApiBase\Interfaces\QueryParameterInterface;
+use Entegrator\ApiBase\Interfaces\ResponseInterface;
 use Entegrator\ApiBase\Request\Url;
+use Entegrator\TrendyolApi\V1\Config;
+use Entegrator\TrendyolApi\V1\Interfaces\RequestInterface;
 use Entegrator\TrendyolApi\V1\Models\Order\Response\OrderResponse;
 use Entegrator\TrendyolApi\V1\TrendyolApi;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\QueryParameter;
 
-class OrderService extends TrendyolApi
+class OrderService
 {
-    private RequestAbstract $request;
+    private TrendyolApi $api;
+
+    /**
+     * @param TrendyolApi $api
+     */
+    public function __construct(TrendyolApi $api)
+    {
+        $this->api = $api;
+
+        $this->api->setRequest($this->api->getRequest() ?? new OrderRequest());
+        $this->api->setRequestHeaders();
+    }
 
     function getOrders(QueryParameterInterface $queryParameter = null) : OrderResponse
     {
         $queryParameter ??= new QueryParameter();
 
-        $request = (new OrderRequest())->setQueryParameter($queryParameter);
-        $this->setRequestHeaders($request);
-        $endPoint = '/suppliers/'.self::$config->getSupplierId().'/orders';
-        $url = new Url(self::$URL, $endPoint, null, $request->getQueryParameter());
-        $request->setUrl($url);
+        $this->api->getRequest()->setQueryParameter($queryParameter);;
+        $endPoint = '/suppliers/'.TrendyolApi::$config->getSupplierId().'/orders';
 
-        return new OrderResponse($request);
+        $url = new Url(TrendyolApi::$URL, $endPoint, null, $this->api->getRequest()->getQueryParameter());
+        $this->api->getRequest()->setUrl($url);
+
+        return new OrderResponse($this->api->getRequest());
     }
 
     function getOrder(string $orderNumber): OrderResponse

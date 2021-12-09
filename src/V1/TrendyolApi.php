@@ -3,24 +3,31 @@
 namespace Entegrator\TrendyolApi\V1;
 
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
+use Entegrator\ApiBase\Interfaces\ResponseInterface;
 use Entegrator\ApiBase\Parameter;
 use Entegrator\ApiBase\Request\Authorization\BasicAuthorization;
 use Entegrator\ApiBase\Request\Header;
+use Entegrator\TrendyolApi\V1\Interfaces\RequestInterface;
 use Entegrator\TrendyolApi\V1\Services\OrderService;
 use Entegrator\TrendyolApi\V1\Services\ProductService;
 
 class TrendyolApi
 {
-    protected static Config $config;
+    protected ?RequestInterface $request = null;
+    public static Config $config;
+    protected static bool $isTest;
 
     protected static string $TEST_URL = 'https://stageapi.trendyol.com/stagesapigw';
     protected static string $PROD_URL = 'https://api.trendyol.com/sapigw';
-    protected static string $URL  = '';
+    public static string $URL  = '';
 
-    public function __construct(Config $config, bool $isTest = false)
+    public function __construct(Config $config, bool $isTest = false,RequestInterface $request = null)
     {
         self::$URL = ($isTest) ? self::$TEST_URL : self::$PROD_URL;
         self::$config = $config;
+        self::$isTest = $isTest;
+        if($request)
+            $this->request = $request;
     }
 
     protected function createHeader(): Header
@@ -40,20 +47,41 @@ class TrendyolApi
     /**
      * @return TrendyolApi
      */
-    public function setRequestHeaders(RequestAbstract $requestAbstract): self
+    public function setRequestHeaders(): self
     {
-        $requestAbstract->setHeader($this->createHeader());
-        $requestAbstract->setAuthorization($this->createAuthorization());
+        $this->request->setHeader($this->createHeader());
+        $this->request->setAuthorization($this->createAuthorization());
         return $this;
     }
 
     public function getOrderService(): OrderService
     {
-        return new OrderService(self::$config);
+        return new OrderService($this);
     }
 
     public function getProductService(): ProductService
     {
-        return new ProductService(self::$config);
+        return new ProductService($this);
     }
+
+
+
+    /**
+     * @return RequestInterface|null
+     */
+    public function getRequest(): RequestInterface|null
+    {
+        return $this->request;
+    }
+
+    /**
+     * @param RequestInterface $request
+     * @return TrendyolApi
+     */
+    public function setRequest(RequestInterface $request): TrendyolApi
+    {
+        $this->request = $request;
+        return $this;
+    }
+
 }

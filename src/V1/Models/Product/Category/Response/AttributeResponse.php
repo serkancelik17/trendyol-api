@@ -5,12 +5,13 @@ namespace Entegrator\TrendyolApi\V1\Models\Product\Category\Response;
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
 use Entegrator\ApiBase\Abstracts\ResponseAbstract;
 use Entegrator\ApiBase\Interfaces\ResponseInterface;
+use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\AttributeRequest;
 use Entegrator\TrendyolApi\V1\Schemas\Category\Attribute;
 
 class AttributeResponse extends ResponseAbstract implements ResponseInterface
 {
 
-    public function __construct(RequestAbstract $request)
+    public function __construct(AttributeRequest $request)
     {
         parent::__construct($request);
     }
