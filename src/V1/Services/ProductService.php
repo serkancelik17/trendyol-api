@@ -20,6 +20,7 @@ use Entegrator\TrendyolApi\V1\Models\Product\Category\Response\AttributeResponse
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Response\CategoryResponse;
 use Entegrator\TrendyolApi\V1\TrendyolApi;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Response\BrandResponse;
+use Exception;
 
 class ProductService
 {
@@ -37,7 +38,7 @@ class ProductService
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function getBrands(QueryParameter $queryParameter = null) : BrandResponse
     {

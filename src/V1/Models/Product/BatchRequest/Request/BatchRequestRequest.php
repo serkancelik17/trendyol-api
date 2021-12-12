@@ -8,8 +8,4 @@ use Entegrator\TrendyolApi\V1\Interfaces\RequestInterface;
 
 class BatchRequestRequest extends RequestAbstract implements RequestInterface
 {
-    public function __construct()
-    {
-    }
-
 }

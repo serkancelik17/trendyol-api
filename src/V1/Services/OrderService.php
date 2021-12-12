@@ -27,7 +27,7 @@ class OrderService
     {
         $queryParameter ??= new QueryParameter();
 
-        $this->api->getRequest()->setQueryParameter($queryParameter);;
+        $this->api->getRequest()->setQueryParameter($queryParameter);
         $endPoint = '/suppliers/'.TrendyolApi::$config->getSupplierId().'/orders';
 
         $url = new Url(TrendyolApi::$URL, $endPoint, null, $this->api->getRequest()->getQueryParameter());

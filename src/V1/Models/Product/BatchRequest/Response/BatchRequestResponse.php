@@ -6,7 +6,7 @@ use Entegrator\ApiBase\Abstracts\ResponseAbstract;
 use Entegrator\ApiBase\Interfaces\ResponseInterface;
 use Entegrator\ApiBase\Response\Util;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Request\BatchRequestRequest;
-use Entegrator\TrendyolApi\V1\Schemas\Order\BatchRequest\Item;
+use Entegrator\TrendyolApi\V1\Schemas\BatchRequest\Item;
 
 class BatchRequestResponse extends ResponseAbstract implements ResponseInterface
 {
@@ -138,7 +138,7 @@ class BatchRequestResponse extends ResponseAbstract implements ResponseInterface
      *
      * @return BatchRequestResponse
      */
-    public function setCreationDate($creationDate): self
+    public function setCreationDate(int $creationDate): self
     {
         $this->creationDate = $creationDate;
 
@@ -158,7 +158,7 @@ class BatchRequestResponse extends ResponseAbstract implements ResponseInterface
      *
      * @return BatchRequestResponse
      */
-    public function setLastModification($lastModification): self
+    public function setLastModification(int $lastModification): self
     {
         $this->lastModification = $lastModification;
 
@@ -178,7 +178,7 @@ class BatchRequestResponse extends ResponseAbstract implements ResponseInterface
      *
      * @return BatchRequestResponse
      */
-    public function setSourceType($sourceType): self
+    public function setSourceType(string $sourceType): self
     {
         $this->sourceType = $sourceType;
 

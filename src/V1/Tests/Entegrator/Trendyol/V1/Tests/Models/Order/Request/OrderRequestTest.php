@@ -1,6 +1,6 @@
 <?php
 
-namespace Entegrator\TrendyolApi\Tests\V1\Models\Order\Request;
+namespace Entegrator\Trendyol\V1\Tests\Models\Order\Request;
 
 use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\QueryParameter;

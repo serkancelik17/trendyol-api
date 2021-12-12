@@ -2,7 +2,6 @@
 
 namespace Entegrator\TrendyolApi\V1\Models\Product\Category\Response;
 
-use Entegrator\ApiBase\Abstracts\RequestAbstract;
 use Entegrator\ApiBase\Abstracts\ResponseAbstract;
 use Entegrator\ApiBase\Interfaces\ResponseInterface;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\AttributeRequest;

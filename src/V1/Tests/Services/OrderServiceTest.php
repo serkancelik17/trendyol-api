@@ -1,6 +1,7 @@
 <?php
-namespace Entegrator\TrendyolApi\Tests\V1\Services;
+namespace Entegrator\Trendyol\V1\Tests\Services;
 
+use DateTime;
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
 use Entegrator\TrendyolApi\V1\Config;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;
@@ -32,7 +33,7 @@ class OrderServiceTest extends TestCase
         $this->mOrderRequest->expects($this->once())->method('run')->willReturn('{"page":'.$page.'}');
         $queryParams = new QueryParameter();
         $queryParams->setPage($page)->setSupplierId($page)->setShipmentPackageIds($page)->setOrderByDirection(QueryParameter\OrderByDirectionQueryParameter::ASC)->setOrderByField("xxx")
-        ->setStartDate(new \DateTime())->setEndDate(new \DateTime())->setStatus(QueryParameter\StatusQueryParameter::DELIVERED);
+        ->setStartDate(new DateTime())->setEndDate(new DateTime())->setStatus(QueryParameter\StatusQueryParameter::DELIVERED);
         $this->assertEquals($page,$this->orderService->getOrders()->getPage());
     }
 

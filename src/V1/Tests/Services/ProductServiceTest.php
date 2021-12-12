@@ -1,5 +1,5 @@
 <?php
-namespace Entegrator\TrendyolApi\Tests\V1\Services;
+namespace Entegrator\Trendyol\V1\Tests\Services;
 
 use Entegrator\TrendyolApi\V1\Config;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;

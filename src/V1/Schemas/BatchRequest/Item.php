@@ -3,7 +3,7 @@
 namespace Entegrator\TrendyolApi\V1\Schemas\BatchRequest;
 
 use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
-use Entegrator\TrendyolApi\V1\Schemas\Order\BatchRequest\Item\RequestItem;
+use Entegrator\TrendyolApi\V1\Schemas\BatchRequest\Item\RequestItem;
 
 class Item extends SchemaAbstract
 {
@@ -20,9 +20,7 @@ class Item extends SchemaAbstract
         parent::__construct($data);
     }
 
-    /**
-     * @return RequestItem
-     */
+
     public function getRequestItem(): RequestItem
     {
         return $this->requestItem;

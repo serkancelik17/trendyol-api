@@ -10,10 +10,5 @@ use Entegrator\TrendyolApi\V1\Interfaces\RequestInterface;
 
 class ByNameRequest extends RequestAbstract implements RequestInterface
 {
-    private string $endPoint = 'brands/by-name';
-
-    public function __construct()
-    {
-    }
 
 }

@@ -24,7 +24,7 @@ class Order extends SchemaAbstract
     private int $customerId;
     private string $customerLastName;
     private int $id;
-    private int $cargoTrackingNumber; //@TODO CODE128 formatında göre typelanacak.
+    private int $cargoTrackingNumber; // @TODO CODE128 formatında göre typelanacak.
     private string $cargoProviderName;
     /** @var Line[] $lines  */
     private array $lines;
@@ -53,11 +53,45 @@ class Order extends SchemaAbstract
     }
 
     /**
+     * @return Address
+     */
+    public function getShipmentAddress(): Address
+    {
+        return $this->shipmentAddress;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getInvoiceAddress(): Address
+    {
+        return $this->invoiceAddress;
+    }
+
+    /**
+     * @return Line[]
+     */
+    public function getLines(): array
+    {
+        return $this->lines;
+    }
+
+    /**
+     * @return PackageHistory[]
+     */
+    public function getPackageHistories(): array
+    {
+        return $this->packageHistories;
+    }
+
+
+
+    /**
      * @param array $invoiceAddress
      */
     public function setInvoiceAddress(array $invoiceAddress): void
     {
-        $this->shipmentAddress = new Address($invoiceAddress);
+        $this->invoiceAddress = new Address($invoiceAddress);
     }
 
     /**

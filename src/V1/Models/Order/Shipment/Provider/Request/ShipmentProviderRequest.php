@@ -3,14 +3,8 @@
 namespace Entegrator\TrendyolApi\V1\Models\Order\Shipment\Provider\Request;
 
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
+use Entegrator\TrendyolApi\V1\Interfaces\RequestInterface;
 
-class ShipmentProviderRequest extends RequestAbstract
+class ShipmentProviderRequest extends RequestAbstract implements RequestInterface
 {
-    private string $endPoint = 'shipment-providers';
-
-    public function __construct()
-    {
-        $this->run();
-    }
-
 }

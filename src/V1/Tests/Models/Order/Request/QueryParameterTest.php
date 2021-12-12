@@ -1,7 +1,8 @@
 <?php
 
-namespace Entegrator\TrendyolApi\Tests\V1\Models\Order\Request;
+namespace Entegrator\Trendyol\V1\Tests\Models\Order\Request;
 
+use DateTime;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\QueryParameter;
 use PHPUnit\Framework\TestCase;
 
@@ -11,7 +12,7 @@ class QueryParameterTest extends TestCase
 
     public function setUp() : void {
         $this->qp = new QueryParameter();
-        $this->qp->setPage(rand())->setSize(rand())->setStatus(uniqid())->setStartDate(new \DateTime())->setEndDate(new \DateTime())->setOrderByField(uniqid())
+        $this->qp->setPage(rand())->setSize(rand())->setStatus(uniqid())->setStartDate(new DateTime())->setEndDate(new DateTime())->setOrderByField(uniqid())
             ->setShipmentPackageIds(rand())->setSupplierId(rand())->setOrderNumber(uniqid());
     }
 

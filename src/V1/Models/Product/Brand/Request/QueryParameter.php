@@ -64,7 +64,7 @@ class QueryParameter implements QueryParameterInterface
     }
 
 
-    public function __toString(): string
+    #[Pure] public function __toString(): string
     {
        return http_build_query($this->toArray());
     }

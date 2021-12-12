@@ -29,7 +29,7 @@ class CategoryResponse extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @param Category[] $categories
+     * @param array $categories
      * @return CategoryResponse
      */
     public function setCategories(array $categories): self
