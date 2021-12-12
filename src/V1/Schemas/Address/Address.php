@@ -3,17 +3,17 @@
 namespace Entegrator\TrendyolApi\V1\Schemas\Address;
 
 use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
-class Address
+class Address extends SchemaAbstract
 {
-    use Util;
 
     /**
      * @param array $data
      */
-    public function __construct(array$data)
+    public function __construct(array $data)
     {
-        $this->hydrate($data);
+        parent::__construct($data);
     }
 
     /**

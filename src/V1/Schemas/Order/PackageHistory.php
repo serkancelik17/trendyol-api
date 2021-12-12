@@ -2,18 +2,21 @@
 
 namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
-class PackageHistory
+class PackageHistory extends SchemaAbstract
 {
-    use Util;
+
+    /**
+     * @param array $data
+     */
+    public function __construct(array $data)
+    {
+        parent::__construct($data);
+    }
 
     private int $createdDate;
     private string $status;
 
-    public function __construct(array $data)
-    {
-        $this->hydrate($data);
-    }
 
 }

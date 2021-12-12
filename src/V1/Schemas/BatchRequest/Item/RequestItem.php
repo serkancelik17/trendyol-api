@@ -1,15 +1,15 @@
 <?php
-namespace Entegrator\TrendyolApi\V1\Schemas\Order\BatchRequest\Item;
+namespace Entegrator\TrendyolApi\V1\Schemas\BatchRequest\Item;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
-use Entegrator\ApiBase\Response\Util;
-
-class RequestItem
+class RequestItem extends SchemaAbstract
 {
-    use Util;
-
+    /**
+     * @param array $data
+     */
     public function __construct(array $data)
     {
-        $this->hydrate($data);
+        parent::__construct($data);
     }
 
     /**

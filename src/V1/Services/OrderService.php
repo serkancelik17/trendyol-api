@@ -1,16 +1,12 @@
 <?php
 namespace Entegrator\TrendyolApi\V1\Services;
 
-use Entegrator\ApiBase\Abstracts\RequestAbstract;
 use Entegrator\ApiBase\Interfaces\QueryParameterInterface;
-use Entegrator\ApiBase\Interfaces\ResponseInterface;
 use Entegrator\ApiBase\Request\Url;
-use Entegrator\TrendyolApi\V1\Config;
-use Entegrator\TrendyolApi\V1\Interfaces\RequestInterface;
-use Entegrator\TrendyolApi\V1\Models\Order\Response\OrderResponse;
-use Entegrator\TrendyolApi\V1\TrendyolApi;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\QueryParameter;
+use Entegrator\TrendyolApi\V1\Models\Order\Response\OrderResponse;
+use Entegrator\TrendyolApi\V1\TrendyolApi;
 
 class OrderService
 {

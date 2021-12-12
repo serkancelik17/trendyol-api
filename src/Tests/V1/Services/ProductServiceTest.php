@@ -3,9 +3,13 @@ namespace Entegrator\TrendyolApi\Tests\V1\Services;
 
 use Entegrator\TrendyolApi\V1\Config;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;
+use Entegrator\TrendyolApi\V1\Models\Product\Address\Request\AddressRequest;
+use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Request\BatchRequestRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\BrandRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\ByNameRequest;
+use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\AttributeRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Category\Request\CategoryRequest;
+use Entegrator\TrendyolApi\V1\Models\Product\Supplier\Address\Response\AddressResponse;
 use Entegrator\TrendyolApi\V1\Services\ProductService;
 use Entegrator\TrendyolApi\V1\TrendyolApi;
 use PHPUnit\Framework\TestCase;
@@ -54,5 +58,38 @@ class ProductServiceTest extends TestCase
         $mCategoryRequest->expects($this->once())->method('run')->willReturn('{"categories" : [{"name" : "'.$name.'"}]}');
 
         $this->assertSame($name,$productService->getCategories()->getCategories()[0]->getName());
+    }
+
+    public function testGetBatchRequestIdDogruGeliyorMu() {
+        $fBatchRequestId = uniqid();
+        $mockReq = $this->createMock(BatchRequestRequest::class);
+        $this->trendyolApi = new TrendyolApi($this->mConfig, false, $mockReq);
+        $productService = $this->trendyolApi->getProductService();
+
+        $mockReq->expects($this->once())->method('run')->willReturn('{"batchRequestId" : "'.$fBatchRequestId.'"}');
+
+        $this->assertSame($fBatchRequestId,$productService->getBatchRequest($fBatchRequestId)->getBatchRequestId());
+    }
+
+    public function testGetAttributeNameDogruGeliyorMu() {
+        $fName = uniqid();
+        $mockReq = $this->createMock(AttributeRequest::class);
+        $this->trendyolApi = new TrendyolApi($this->mConfig, false, $mockReq);
+        $productService = $this->trendyolApi->getProductService();
+
+        $mockReq->expects($this->once())->method('run')->willReturn('{"name" : "'.$fName.'"}');
+
+        $this->assertSame($fName,$productService->getAttributes(1)->getName());
+    }
+
+    public function testGetSupplierAddressesCityDogruGeliyorMu() {
+        $fCity = uniqid();
+        $mockReq = $this->createMock(AddressRequest::class);
+        $this->trendyolApi = new TrendyolApi($this->mConfig, false, $mockReq);
+        $productService = $this->trendyolApi->getProductService();
+
+        $mockReq->expects($this->once())->method('run')->willReturn('{"supplierAddresses" : [{"city" : "'.$fCity.'"}]}');
+
+        $this->assertSame($fCity,$productService->getSuppliersAddresses()->getSupplierAddresses()[0]->getCity());
     }
 }

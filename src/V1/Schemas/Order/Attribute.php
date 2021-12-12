@@ -2,18 +2,18 @@
 
 namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
-class Attribute
+class Attribute extends SchemaAbstract
 {
-    use Util;
-
+    /**
+     * @param array $data
+     */
     public function __construct(array $data)
     {
-        $this->hydrate($data);
+        parent::__construct($data);
     }
 
-    use Util;
     /**
      * @var int
      */

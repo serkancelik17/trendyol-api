@@ -7,7 +7,7 @@ use Entegrator\ApiBase\Request\Url;
 use Entegrator\ApiBase\Response\Util;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\Address\Request\AddressRequest;
-use Entegrator\TrendyolApi\V1\Models\Product\Address\Response\AddressResponse;
+use Entegrator\TrendyolApi\V1\Models\Product\Supplier\Address\Response\AddressResponse;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Request\BatchRequestRequest;
 use Entegrator\TrendyolApi\V1\Models\Product\BatchRequest\Response\BatchRequestResponse;
 use Entegrator\TrendyolApi\V1\Models\Product\Brand\Request\BrandRequest;
@@ -97,7 +97,7 @@ class ProductService
      * @param string $batchRequestId
      * @return BatchRequestResponse
      */
-    public function getBatchRequests(string $batchRequestId): BatchRequestResponse
+    public function getBatchRequest(string $batchRequestId): BatchRequestResponse
     {
         $this->api->setRequest($this->api->getRequest() ?? new BatchRequestRequest());
         $endpoint = '/suppliers/'.TrendyolApi::$config->getSupplierId().'/products/batch-requests/'.$batchRequestId;
@@ -129,7 +129,7 @@ class ProductService
     /**
      * @return AddressResponse
      */
-    public function getSuppliersAddress(): AddressResponse
+    public function getSuppliersAddresses(): AddressResponse
     {
         $this->api->setRequest($this->api->getRequest() ?? new AddressRequest());
         $endPoint = '/suppliers/'.TrendyolApi::$config->getSupplierId().'/addresses';

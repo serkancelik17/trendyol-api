@@ -2,18 +2,18 @@
 
 namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\ApiBase\Response\Util;
 use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
 class DiscountDetail extends SchemaAbstract
 {
-    use Util;
-
-    private float $lineItemPrice;
-    private float $liteItemDiscount;
-
+    /**
+     * @param array $data
+     */
     public function __construct(array $data)
     {
         parent::__construct($data);
     }
+
+    private float $lineItemPrice;
+    private float $liteItemDiscount;
 }

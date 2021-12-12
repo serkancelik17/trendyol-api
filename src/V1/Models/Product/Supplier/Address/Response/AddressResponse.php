@@ -1,5 +1,5 @@
 <?php
-namespace Entegrator\TrendyolApi\V1\Models\Product\Address\Response;
+namespace Entegrator\TrendyolApi\V1\Models\Product\Supplier\Address\Response;
 
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
 use Entegrator\ApiBase\Abstracts\ResponseAbstract;

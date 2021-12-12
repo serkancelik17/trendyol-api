@@ -208,10 +208,12 @@ class QueryParameter implements QueryParameterInterface
 
     /**
      * @param int|null $supplierId
+     * @return QueryParameter
      */
-    public function setSupplierId(?int $supplierId): void
+    public function setSupplierId(?int $supplierId): self
     {
         $this->supplierId = $supplierId;
+        return $this;
     }
 
     /**
@@ -224,10 +226,12 @@ class QueryParameter implements QueryParameterInterface
 
     /**
      * @param string|null $orderNumber
+     * @return QueryParameter
      */
-    public function setOrderNumber(?string $orderNumber): void
+    public function setOrderNumber(?string $orderNumber): self
     {
         $this->orderNumber = $orderNumber;
+        return $this;
     }
 
 

@@ -2,12 +2,17 @@
 
 namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
-class Order
+class Order extends SchemaAbstract
 {
-    use Util;
-
+    /**
+     * @param array $data
+     */
+    public function __construct(array $data)
+    {
+        parent::__construct($data);
+    }
     private Address $shipmentAddress;
     private string $orderNumber;
     private float $grossAmount;
@@ -38,11 +43,6 @@ class Order
     private int $agreedDeliveryDate;
     private bool $fastDelivery;
     private int $originShipmentDate;
-
-    public function __construct(array $data)
-    {
-        $this->hydrate($data);
-    }
 
     /**
      * @param array $shipmentAddress
@@ -515,7 +515,5 @@ class Order
         $this->originShipmentDate = $originShipmentDate;
         return $this;
     }
-
-
 
 }

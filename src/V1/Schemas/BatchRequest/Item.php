@@ -1,21 +1,23 @@
 <?php
 
-namespace Entegrator\TrendyolApi\V1\Schemas\Order\BatchRequest;
+namespace Entegrator\TrendyolApi\V1\Schemas\BatchRequest;
 
-use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 use Entegrator\TrendyolApi\V1\Schemas\Order\BatchRequest\Item\RequestItem;
 
-class Item
+class Item extends SchemaAbstract
 {
-    use Util;
 
     private RequestItem $requestItem;
     private string $status;
     private array $failureReasons = []; //@TODO içindekileri bulamadim. Bulunca modellenmesi lazim.
 
+    /**
+     * @param array $data
+     */
     public function __construct(array $data)
     {
-        $this->hydrate($data);
+        parent::__construct($data);
     }
 
     /**

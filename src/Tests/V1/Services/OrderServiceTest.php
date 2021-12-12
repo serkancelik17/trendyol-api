@@ -4,6 +4,7 @@ namespace Entegrator\TrendyolApi\Tests\V1\Services;
 use Entegrator\ApiBase\Abstracts\RequestAbstract;
 use Entegrator\TrendyolApi\V1\Config;
 use Entegrator\TrendyolApi\V1\Models\Order\Request\OrderRequest;
+use Entegrator\TrendyolApi\V1\Models\Order\Request\QueryParameter;
 use Entegrator\TrendyolApi\V1\Services\OrderService;
 use Entegrator\TrendyolApi\V1\Services\ProductService;
 use Entegrator\TrendyolApi\V1\TrendyolApi;
@@ -26,10 +27,12 @@ class OrderServiceTest extends TestCase
 }
 
     function testGetOrdersSayfaNumarasiGeliyorMu() {
-        $page = 999;
+        $page = rand(1000,1000000);
 
         $this->mOrderRequest->expects($this->once())->method('run')->willReturn('{"page":'.$page.'}');
-
+        $queryParams = new QueryParameter();
+        $queryParams->setPage($page)->setSupplierId($page)->setShipmentPackageIds($page)->setOrderByDirection(QueryParameter\OrderByDirectionQueryParameter::ASC)->setOrderByField("xxx")
+        ->setStartDate(new \DateTime())->setEndDate(new \DateTime())->setStatus(QueryParameter\StatusQueryParameter::DELIVERED);
         $this->assertEquals($page,$this->orderService->getOrders()->getPage());
     }
 

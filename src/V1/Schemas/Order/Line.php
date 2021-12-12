@@ -2,13 +2,10 @@
 
 namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\TrendyolApi\V1\Schemas\Order\DiscountDetail;
-use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
-class Line
+class Line extends SchemaAbstract
 {
-    use Util;
-
     private int $quantity;
     private int $salesCampaignId;
     private string $productSize;
@@ -29,10 +26,12 @@ class Line
     private string $orderLineItemStatusName;
     private float $price;
 
+    /**
+     * @param array $data
+     */
     public function __construct(array $data)
     {
-        $this->hydrate($data);
+        parent::__construct($data);
     }
-
 
 }

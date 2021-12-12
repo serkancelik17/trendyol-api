@@ -2,11 +2,10 @@
 
 namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
-class Address
+class Address extends SchemaAbstract
 {
-    use Util;
 
     private int $id;
     private string $firstName;
@@ -26,9 +25,12 @@ class Address
     private string $fullAddress;
     private string $fillName;
 
+    /**
+     * @param array $data
+     */
     public function __construct(array $data)
     {
-        $this->hydrate($data);
+        parent::__construct($data);
     }
 
 }

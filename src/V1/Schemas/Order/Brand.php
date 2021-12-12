@@ -1,18 +1,21 @@
 <?php
+
 namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
-class Brand
+class Brand extends SchemaAbstract
 {
-    Use Util;
 
     private int $id;
     private string $name;
 
+    /**
+     * @param array $data
+     */
     public function __construct(array $data)
     {
-        $this->hydrate($data);
+        parent::__construct($data);
     }
 
     /**
@@ -50,7 +53,6 @@ class Brand
         $this->name = $name;
         return $this;
     }
-
 
 
 }

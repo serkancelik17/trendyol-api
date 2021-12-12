@@ -2,11 +2,17 @@
 
 namespace Entegrator\TrendyolApi\V1\Schemas\Order;
 
-use Entegrator\ApiBase\Response\Util;
+use Entegrator\TrendyolApi\V1\Abstracts\SchemaAbstract;
 
-class Category
+class Category extends SchemaAbstract
 {
-    use Util;
+    /**
+     * @param array $data
+     */
+    public function __construct(array $data)
+    {
+        parent::__construct($data);
+    }
     /**
      * @var int
      */
@@ -27,11 +33,6 @@ class Category
      */
     private array $subCategories = [];
 
-
-    public function __construct(array $data)
-    {
-        $this->hydrate($data);
-    }
 
     /**
      * @return int
