@@ -35,6 +35,9 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+          
       - name: PHPUnit for PHP 8
         # You may pin to the exact commit or the version.
         # uses: chindit/actions-phpunit@3008f2dbdfc887f862346ec666e4c856c710785e
